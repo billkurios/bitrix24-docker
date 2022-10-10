@@ -1,10 +1,10 @@
-# Как подключить phpMyAdmin
+# Comment se connecter à phpMyAdmin
 
-Если вы используете phpMyAdmin для работы с базой данных, вы можете подключить его через Docker Compose. 
+Si vous utilisez phpMyAdmin pour votre base de données, vous pouvez le connecter via Docker Compose. 
 
-## Шаг 1: Создание конфигурационного файла
+## Étape 1 : Créer un fichier de configuration
 
-В папке проекта создайте `docker-compose.yml` со следующим содержимым:
+Dans votre dossier de projet, créez `docker-compose.yml` avec le contenu suivant:
 
 ```yml
 version: '3'
@@ -50,15 +50,15 @@ services:
       MYSQL_PASSWORD: +Tr+()8]!szl[HQIsoT5
 ```
 
-## Шаг 2: Запуск Bitrix24 Docker
+## Étape 2 : Lancez Bitrix24 Docker
 
-В консоли выполните команду:
+Dans la console, exécutez la commande :
 
 ```shell
 docker-compose up -d
 ```
 
-На экране повится сообщение об успешном запуске контейнеров.
+Un message apparaîtra à l'écran indiquant que les conteneurs ont été lancés avec succès.
 
 ```shell
 $ docker-compose up -d
@@ -68,15 +68,15 @@ Starting myproject_web_1   ... done
 Starting myproject_phpmyadmin_1 ... done
 ```
 
-## Шаг 3: Подключение к phpMyAdmin
+## Étape 3 : Connexion à phpMyAdmin
 
-Откройте браузер и перейдите по адресу http://localhost:8181, вы увидите стандартное окно авторизации `phpMyAdmin`. 
+Ouvrez un navigateur et accédez à http://localhost:8181, vous verrez la fenêtre de connexion standard `phpMyAdmin`. 
 
-Используйте параметры входа из конфигурационного файл:
+Utilisez les paramètres de connexion du fichier de configuration:
 
 - `Username`: bitrix
 - `Password`: +Tr+()8]!szl[HQIsoT5
 
-## Дополнительная информация
+## Informations Complémentaires
 
-- [Официальная сборка phpMyAdmin](https://hub.docker.com/r/phpmyadmin/phpmyadmin/)
+- [Build officiel de phpMyAdmin](https://hub.docker.com/r/phpmyadmin/phpmyadmin/)

@@ -1,10 +1,10 @@
-# Пошаговая инструкция по установке портала Битрикс24
+# Instructions pas à pas pour installer le portail Bitrix24
 
-Инструкция описывает процесс запуска Bitrix24 Docker образа на локальной машине.
+L'instruction décrit le processus de lancement de l'image Bitrix24 Docker sur une machine locale.
 
-## Шаг 1: Проверка на наличие установленных программ
+## Étape 1 : Vérification des programmes installés
 
-Убедитесь в том, что у вас локально установлен и запущен Docker. Для пользователей Linux дополнительно [потребуется установка Docker Compose](https://docs.docker.com/compose/install/). 
+Assurez-vous que Docker est installé et exécuté localement. Pour les utilisateurs Linux, en plus [nécessite l'installation de Docker Compose](https://docs.docker.com/compose/install/).
 
 ```shell
 $ docker --version
@@ -14,32 +14,32 @@ $ docker-compose --version
 docker-compose version 1.23.2, build 1110ad01
 ```
 
-Если у вас не установлен Docker, воспользуйтесь официальным руководством.
+Si vous n'avez pas installé Docker, suivez le guide officiel.
 
 - [Windows](https://docs.docker.com/docker-for-windows/install/)
 - [Linux (Ubuntu, CentOS, Debian)](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 - [Mac](https://docs.docker.com/docker-for-mac/install/)
 
-> Для пользователей Windows 10, перед установкой, следует обратить внимание на версию своей операционной системы. 
+> Pour les utilisateurs de Windows 10, avant l'installation, vous devez faire attention à la version de votre système d'exploitation.
 > 
-> Так, если у вас установлен `Windows 10 Pro` вам подойдет обычная версия Docker CE, если у вас `Windows 10 Home`, то потребуется дополнительная установка `Docker Toolbox`.
+> Donc, si vous avez installé `Windows 10 Pro`, la version standard de Docker CE fera l'affaire, si vous avez `Windows 10 Home`, vous aurez besoin d'une installation supplémentaire de `Docker Toolbox`.
 > 
-> Следуйте инструкциям официального руководства.
+> Suivez les instructions du manuel officiel.
 
-## Шаг 2: Инициализация проекта
+## Étape 2 : Initialisation du projet
 
-Создайте новую папку, в которой будет размещаться наш проект, и перейдите в нее.
+Créez un nouveau dossier pour héberger notre projet et accédez-y.
 
-В консоли это будет выглядеть вот так:
+Dans la console, cela ressemblera à ceci :
 
 ```shell
 mkdir myproject
 cd myproject
 ```
 
-## Шаг 3: Создание конфигурационного файла
+## Étape 3 : Créer un fichier de configuration
 
-В папке проекта создайте `docker-compose.yml` со следующим содержимым:
+Dans votre dossier de projet, créez `docker-compose.yml` avec le contenu suivant :
 
 
 ```yml
@@ -76,15 +76,15 @@ services:
     command: ['--character-set-server=utf8', '--collation-server=utf8_unicode_ci', '--skip-character-set-client-handshake', '--sql-mode=']   
 ```
 
-## Шаг 4: Запуск Bitrix24 Docker
+## Étape 4 : Lancez Bitrix24 Docker
 
-В консоли выполните команду:
+Dans la console, exécutez la commande :
 
 ```shell
 docker-compose up -d
 ```
 
-На экране повится сообщение об успешном запуске контейнеров.
+Un message apparaîtra à l'écran indiquant que les conteneurs ont été lancés avec succès.
 
 ```shell
 $ docker-compose up -d
@@ -93,10 +93,10 @@ Starting myproject_tools_1 ... done
 Starting myproject_web_1   ... done
 ```
 
-В случае возникновения ошибок, убедитесь что вы находитесь в директории проекта (см. шаг 2) и у вас установлен Docker Compose.
+En cas d'erreur, assurez-vous que vous êtes dans le répertoire du projet (voir étape 2) et que Docker Compose est installé.
 
-## Шаг 4: Установка портала
+## Étape 4 : Installation du portail
 
-Откройте браузер и перейдите по адресу http://localhost, вы увидите стандартный инсталлятор  Битрикс. В результате его работы, вы получите полностью рабочий портал.
+Ouvrez un navigateur et accédez à http://localhost, vous verrez le programme d'installation standard de Bitrix. Grâce à son travail, vous recevrez un portail entièrement fonctionnel.
 
-Все файлы, размещенные в директории проекта будут доступны в папке `/local`. Если вы еще не используете эту директорию для разработки собственных решений, настоятельно рекомендуется ознакомиться с официальным курсом ["Разработчик Bitrix Framework"](https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=43&LESSON_ID=2705&LESSON_PATH=3913.4776.2483.2705)
+Tous les fichiers placés dans le répertoire du projet seront disponibles dans le dossier `/local`. Si vous n'utilisez pas encore cet annuaire pour développer vos propres solutions, il est fortement recommandé de vous familiariser avec le cours officiel [Bitrix Framework Developer](https://dev.1c-bitrix.ru/learning/course/ index.php?COURSE_ID=43&LESSON_ID= 2705&LESSON_PATH=3913.4776.2483.2705)
