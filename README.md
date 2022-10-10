@@ -1,35 +1,35 @@
 ![Bitrix24 Docker](/docs/assets/bitrix24-docker-logo.png)
 
-# Bitrix24 Docker: Веб-окружение 1С-Битрикс24 Корпоративный Портал
+# Bitrix24 Docker: Environnement Web 1C-Portail d'entreprise Bitrix24
 
-Позволяет быстро и легко запускать Битрикс24 на Docker для локальной разработки и автоматизации процесса тестирования.
+Vous permet d'exécuter rapidement et facilement Bitrix24 sur Docker pour le développement local et l'automatisation du processus de test.
 
-## Введение
+## Introduction
 
-Bitrix24 Docker предоставляет готовую виртуальную среду, оптимизированную для разработки и тестирования портальных решений Битрикс24. 
+Bitrix24 Docker fournit un environnement virtuel prêt à l'emploi optimisé pour le développement et le test des solutions de portail Bitrix24.
 
-### Используйте Bitrix24 Docker если вам необходимо:
+### Utilisez Bitrix24 Docker si vous avez besoin:
 
-- Быстро развернуть веб окружение для разработки компонентов и приложений для Битрикс24
-- Избавиться от множества клонов виртуальных машин под каждый проект
-- Запустить чистую копию портала без сложных технических заморочек
-- Автоматизировать запуск тестов в облаке (Continuous Integration)
+- Déployez rapidement un environnement Web pour développer des composants et des applications pour Bitrix24
+- Débarrassez-vous de nombreux clones de machines virtuelles pour chaque projet
+- Exécutez une copie propre du portail sans problèmes techniques complexes
+- Automatisez l'exécution des tests dans le cloud (intégration continue)
 
-## Преимущества данной сборки
+## Avantages de cette construction
 
-- Наличие специфических для Битрикс24 служб, отсутствующих в других сборках (Push & Pull сервер)
-- Полная совместимость с bitrix-env, прохождение всех встроенных тестов портала
-- База данных не входит в основной образ и подключается через Docker Compose
-- Возможность расширять и подключать дополнительные сервисы (phpMyAdmin, Codeception и т.д.)
-- Использование переменных окружения (для запуска одного контейнера с разными параметрами)
+- Disponibilité des services spécifiques à Bitrix24 qui ne sont pas disponibles dans d'autres versions (serveur Push & Pull)
+- Compatibilité totale avec bitrix-env, réussissant tous les tests de portail intégrés
+- La base de données n'est pas incluse dans l'image principale et est connectée via Docker Compose
+- Possibilité d'étendre et de connecter des services supplémentaires (phpMyAdmin, Codeception, etc.)
+- Utilisation de variables d'environnement (pour exécuter un conteneur avec différents paramètres)
 
-## Начало работы
+## Début des travaux
 
-Для работы с Bitrix24 Docker рекомендуется использовать Docker Compose. 
+Pour travailler avec Bitrix24 Docker, il est recommandé d'utiliser Docker Compose. 
 
-Ниже приведен конфигурационный файл `docker-compose.yml` с подключенной MariaDB, где директория запуска будет примонтирована к папке /local внутри контейнера. 
+Ci-dessous se trouve le fichier de configuration `docker-compose.yml` avec MariaDB connecté, où le répertoire de lancement sera monté dans le dossier /local à l'intérieur du conteneur.
 
-Вы можете поменять версию базы или подключить несколько разных баз данных одновременно, дополнив этот файл соответствующими инструкциями.
+Vous pouvez changer la version de la base de données ou connecter plusieurs bases de données différentes en même temps en complétant ce fichier avec les instructions appropriées.
 
 ```yml
 version: '3'
@@ -65,16 +65,16 @@ services:
     command: ['--character-set-server=utf8', '--collation-server=utf8_unicode_ci', '--skip-character-set-client-handshake', '--sql-mode=']   
 ```
 
-Bitrix24 Docker включает в себя первичные файлы установки, поэтому после старта контейнеров, вы сразу увидите страницу установки свежей копии портала по адресу http://localhost. 
+Bitrix24 Docker inclut les fichiers d'installation principaux, donc après le démarrage des conteneurs, vous verrez immédiatement la page pour installer une nouvelle copie du portail à l'adresse http://localhost. 
 
-Если вы подключаете Bitrix24 Docker к уже существующему проекту, поменяйте значение `volumes` секции `web` на `./:/home/bitrix/www`. 
+Si vous connectez Bitrix24 Docker à un projet existant, modifiez la valeur des `volumes` de la section `web` en `./:/home/bitrix/www`. 
 
-### Другие сценарии запуска
+### Autres scripts de lancement
 
-- [Пошаговая инструкция по установке портала](/docs/01-install-step-by-step.md)
-- [Как подключить phpMyAdmin](/docs/02-phpmyadmin-setup.md)
-- Запуск Codeception тестов
+- [Instructions pas à pas pour l'installation du portail](/docs/01-install-step-by-step.md)
+- [Comment se connecter à phpMyAdmin](/docs/02-phpmyadmin-setup.md)
+- Exécution de tests de détection de code
 
-## Примечание
+## Noter
 
-Это неофициальная сборка и предназначена исключительно для локальной разработки. Не используйте данный образ в production среде.
+Ceci est une version non officielle et est uniquement destinée au développement local. N'utilisez pas cette image dans un environnement de production.
